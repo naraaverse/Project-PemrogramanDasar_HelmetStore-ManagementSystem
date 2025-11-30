@@ -2,26 +2,22 @@
 //  Admin.h
 //  Implementation of the Class Admin
 //  Created on:      30-Nov-2025 7:58:31 PM
-//  Original author: moog
+//  Original author: nara
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_2E32F519_B8EA_4117_9A34_72066B130EE6__INCLUDED_)
-#define EA_2E32F519_B8EA_4117_9A34_72066B130EE6__INCLUDED_
+#ifndef ADMIN_H
+#define ADMIN_H
 
 #include "Catalog.h"
-
 class Admin : public Catalog
 {
 
 public:
 	Admin();
 	virtual ~Admin();
-
-	void updateCatalog();
+	bool loginAdmin(string pass);
+	void manageCatalog(Catalog &updatecat);
 
 private:
-	string adminEmail;
-	string adminPass;
-
 };
-#endif // !defined(EA_2E32F519_B8EA_4117_9A34_72066B130EE6__INCLUDED_)
+#endif // ADMIN_H

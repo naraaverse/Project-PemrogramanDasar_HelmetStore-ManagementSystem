@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  Catalog.h
 //  Implementation of the Class Catalog
-//  Created on:      30-Nov-2025 7:46:25 PM
+//  Created on:      30-Nov-2025 7:58:31 PM
 //  Original author: moog
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_7A876C4C_BB5C_4386_B5E4_FB4B77F31B5F__INCLUDED_)
-#define EA_7A876C4C_BB5C_4386_B5E4_FB4B77F31B5F__INCLUDED_
+#if !defined(EA_E4304A35_4257_4ee9_9B16_94F5D6D63016__INCLUDED_)
+#define EA_E4304A35_4257_4ee9_9B16_94F5D6D63016__INCLUDED_
 
 class Catalog
 {
@@ -16,7 +16,6 @@ public:
 	virtual ~Catalog();
 
 	void displayCatalog();
-	void updateCatalog();
 
 private:
 	int availability;
@@ -26,4 +25,4 @@ private:
 	string helmetType;
 
 };
-#endif // !defined(EA_7A876C4C_BB5C_4386_B5E4_FB4B77F31B5F__INCLUDED_)
+#endif // !defined(EA_E4304A35_4257_4ee9_9B16_94F5D6D63016__INCLUDED_)

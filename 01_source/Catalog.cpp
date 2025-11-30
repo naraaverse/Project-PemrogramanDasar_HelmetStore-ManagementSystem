@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  Catalog.cpp
 //  Implementation of the Class Catalog
-//  Created on:      30-Nov-2025 7:46:25 PM
+//  Created on:      30-Nov-2025 7:58:31 PM
 //  Original author: moog
 ///////////////////////////////////////////////////////////
 
@@ -23,10 +23,5 @@ Catalog::~Catalog(){
 
 
 void Catalog::displayCatalog(){
-
-}
-
-
-void Catalog::updateCatalog(){
 
 }

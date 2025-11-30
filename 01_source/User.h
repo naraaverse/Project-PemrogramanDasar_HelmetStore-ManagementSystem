@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  User.h
 //  Implementation of the Class User
-//  Created on:      30-Nov-2025 7:46:22 PM
+//  Created on:      30-Nov-2025 7:58:30 PM
 //  Original author: moog
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_8EED6CC5_3AEA_4c95_BC72_832003C19157__INCLUDED_)
-#define EA_8EED6CC5_3AEA_4c95_BC72_832003C19157__INCLUDED_
+#if !defined(EA_C958E64F_EDF3_43ce_8D68_850669CC0FEF__INCLUDED_)
+#define EA_C958E64F_EDF3_43ce_8D68_850669CC0FEF__INCLUDED_
 
 #include "Registration.h"
 #include "Login.h"
@@ -33,4 +33,4 @@ private:
 	string userNumber;
 
 };
-#endif // !defined(EA_8EED6CC5_3AEA_4c95_BC72_832003C19157__INCLUDED_)
+#endif // !defined(EA_C958E64F_EDF3_43ce_8D68_850669CC0FEF__INCLUDED_)

@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////////////
 //  Registration.h
 //  Implementation of the Class Registration
-//  Created on:      30-Nov-2025 7:46:17 PM
+//  Created on:      30-Nov-2025 7:58:29 PM
 //  Original author: moog
 ///////////////////////////////////////////////////////////
 
-#if !defined(EA_7F2AD5FC_1FC0_4d7b_80AF_FAE029C2BBB4__INCLUDED_)
-#define EA_7F2AD5FC_1FC0_4d7b_80AF_FAE029C2BBB4__INCLUDED_
+#if !defined(EA_DA35F5F9_8576_48a3_9A81_7BBC51D8ECEE__INCLUDED_)
+#define EA_DA35F5F9_8576_48a3_9A81_7BBC51D8ECEE__INCLUDED_
 
 class Registration
 {
@@ -22,4 +22,4 @@ private:
 	string passUser;
 
 };
-#endif // !defined(EA_7F2AD5FC_1FC0_4d7b_80AF_FAE029C2BBB4__INCLUDED_)
+#endif // !defined(EA_DA35F5F9_8576_48a3_9A81_7BBC51D8ECEE__INCLUDED_)

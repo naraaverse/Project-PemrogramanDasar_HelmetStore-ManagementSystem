@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //  Admin.cpp
 //  Implementation of the Class Admin
-//  Created on:      30-Nov-2025 7:46:23 PM
+//  Created on:      30-Nov-2025 7:58:31 PM
 //  Original author: moog
 ///////////////////////////////////////////////////////////
 
@@ -22,7 +22,6 @@ Admin::~Admin(){
 
 
 
-bool Admin::manageCatalog(){
+void Admin::updateCatalog(){
 
-	return false;
 }

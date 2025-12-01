@@ -13,6 +13,8 @@ void adminMenu(){
         cout << "2. Back to Main Menu" << endl;
         cout << "Choose your option:" << endl;
         cin >> choice;
+        cin.ignore();
+
         switch(choice){
             case 1:{
                 string passAdmin;
@@ -26,6 +28,8 @@ void adminMenu(){
                         cout << "2. Logout" << endl;
                         cout << "Choice: ";
                         cin >> admOption;
+                        cin.ignore();
+
                         switch (admOption) {
                             case 1: {
                                 Catalog updatecat;
@@ -72,6 +76,8 @@ void userMenu(){
         cout << "4. Back to Main Menu" << endl;
         cout << "Choose your option:" << endl;
         cin >> choice;
+        cin.ignore();
+
         switch(choice){
             case 1:{
                 if (user.loginAccount()) {
@@ -117,6 +123,34 @@ void userMenu(){
     } while (choice != 4);
 }
 
-int main(){
+int main() {
+    int mainChoice;
+
+    do {
+        cout << "\n======================================\n";
+        cout << "   HELMET STORE MANAGEMENT SYSTEM     " << endl;
+        cout << "======================================\n";
+        cout << "1. Login as Admin" << endl;
+        cout << "2. Login as User" << endl;
+        cout << "3. Exit" << endl;
+        cout << "======================================\n";
+        cout << "Pilih Menu: ";
+        cin >> mainChoice;
+        cin.ignore(); 
+
+        switch (mainChoice) {
+            case 1:
+                adminMenu(); 
+                break;
+            case 2:
+                userMenu();
+                break;
+            case 3:
+                cout << "Thank you for visiting this site! Have a nice day ^_^" << endl;
+                break;
+            default:
+                cout << "Invalid choice! Please try again." << endl;
+        }
+    } while (mainChoice != 3);
 
 }

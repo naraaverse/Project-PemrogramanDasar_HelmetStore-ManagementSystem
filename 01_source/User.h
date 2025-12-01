@@ -21,6 +21,9 @@ public:
 	User();
 	virtual ~User();
 	Order *m_Order;
+	string getUserName() {
+	    return userName;
+	}
 	void editProfile();
 	bool loginAccount();
 	void registerAccount();

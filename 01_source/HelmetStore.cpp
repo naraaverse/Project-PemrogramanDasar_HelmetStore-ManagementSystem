@@ -73,6 +73,50 @@ void userMenu(){
         cout << "Choose your option:" << endl;
         cin >> choice;
         switch(choice){
+            case 1:{
+                if (user.loginAccount()) {
+                    int userOption;
+                    do {
+                        cout << "Hi " << user.getUserName() << "! What you gonna do?" << endl;
+                        cout << "1. Update Profile" << endl;
+                        cout << "2. View Profile" << endl;
+                        cout << "3. Logout" << endl;
+                        cout << "Choice: ";
+                        cin >> userOption;
+                        cin.ignore();
+
+                        if (userOption == 1) {
+                            user.editProfile();
+                        } else if (userOption == 2) {
+                            user.viewProfile();
+                        } else if (userOption == 3) {
+                            cout << "Logging out" << endl;
+                        } else {
+                            cout << "Invalid option." << endl;
+                        }
+                    } while (userOption != 3);
+                }
+                break; 
+            }
+            case 2:
+                user.registerAccount();
+                break;
+
+            case 3:{
+                Catalog viewcat;
+                user.viewCatalog(viewcat);
+                break;
+            }
+            case 4:
+                cout << "Returning to Main Menu" << endl;
+                break;
+
+            default:
+                cout << "Invalid choice. Please try again." << endl;
         }
-    } while (choice != 3);
+    } while (choice != 4);
+}
+
+int main(){
+
 }

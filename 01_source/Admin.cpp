@@ -18,7 +18,7 @@ Admin::~Admin(){
 
 }
 
-bool loginAdmin(string pass){
+bool Admin::loginAdmin(string pass){
     if (pass == "HelmetStore Jaya") return true;
     return false;
 }

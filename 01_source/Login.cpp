@@ -19,7 +19,7 @@ Login::~Login(){
 
 bool Login::verifyLogin(){
 	cout << "Enter your email: ";
-	cin >> emailLogin;
+	getline (cin, emailLogin);
 	cout << "Enter your password: ";
 	getline(cin, passLogin);
 	return true;

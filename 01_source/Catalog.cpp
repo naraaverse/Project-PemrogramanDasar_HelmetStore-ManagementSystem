@@ -9,11 +9,11 @@
 #include <iostream>
 
 Catalog::Catalog(){
-    availability = 0;
-    helmetBrand = "";
-    helmetColor = "";
-    helmetPrice = 0.0;
-    helmetType = "";
+    availability = 10;
+    helmetBrand = "KYT Course";
+    helmetColor = "Blue";
+    helmetPrice = 150000;
+    helmetType = "Full Face";
 }
 
 Catalog::~Catalog(){

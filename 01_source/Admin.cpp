@@ -24,7 +24,7 @@ bool Admin::loginAdmin(string pass){
 }
 
 void Admin::manageCatalog(Catalog  &updatecat){
-    cout << "Update Helmet Catalog" << endl;
+    cout << "\nUpdate Helmet Catalog" << endl;
     updatecat.updateCatalog();
     cout << "Catalog updated successfully!" << endl;
 }

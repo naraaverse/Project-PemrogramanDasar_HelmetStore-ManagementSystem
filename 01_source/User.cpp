@@ -55,3 +55,7 @@ void User::viewProfile(){
 	cout << "Phone Number: " << userNumber << endl;
 	cout << "Bank: " << userBank << endl;
 }
+
+void User::viewCatalog(Catalog &viewcat){
+	viewcat.displayCatalog();
+}

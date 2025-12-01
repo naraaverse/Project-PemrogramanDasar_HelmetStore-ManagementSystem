@@ -25,6 +25,7 @@ public:
 	bool loginAccount();
 	void registerAccount();
 	void viewProfile();
+	void viewCatalog(Catalog &viewcat);
 
 private:
 	string userAddress;

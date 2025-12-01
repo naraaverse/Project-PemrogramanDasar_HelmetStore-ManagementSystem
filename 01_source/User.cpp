@@ -33,9 +33,19 @@ void User::editProfile(){
 }
 
 bool User::loginAccount(){
+	Login userLogin;
+	if (userLogin.verifyLogin()){
+		cout << "Login successful!" << endl; 
+		return true;
+	} 
+	else {
+		cout << "Login failed. Please check your credentials." << endl;
+		return false;
+	}
 }
 
 void User::registerAccount(){
+	verifyData();
 }
 
 void User::viewProfile(){

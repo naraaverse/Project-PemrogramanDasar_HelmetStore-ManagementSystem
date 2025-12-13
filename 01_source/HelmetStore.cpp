@@ -17,10 +17,12 @@ void adminMenu(){
 
         switch(choice){
             case 1:{
-                string passAdmin;
+                string nameAdmin, passAdmin;
+                cout << "\nEnter Admin Name: ";
+                getline(cin, nameAdmin);
                 cout << "\nEnter Admin Password: ";
                 getline(cin, passAdmin);
-                if (admin.loginAdmin(passAdmin)) {
+                if (admin.loginAdmin(nameAdmin, passAdmin)) {
                     int admOption;
                     do {
                         cout << "\nWelcome to Admin Panel!" << endl;
@@ -54,7 +56,7 @@ void adminMenu(){
                     } while (admOption != 0);
                 }
                 else {
-                    cout << "Incorrect Password. Access Denied." << endl;
+                    cout << "Incorrect Name or Password. Access Denied." << endl;
                 }
             break;
             }

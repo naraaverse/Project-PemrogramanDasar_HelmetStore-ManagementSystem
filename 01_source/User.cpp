@@ -28,6 +28,7 @@ void User::editProfile(){
 	cout << "Enter Phone Number: ";
 	cin >> userNumber;
 	cout << "Enter Bank: ";
+	cin.ignore();
 	getline(cin, userBank);
 	cout << "Profile updated successfully!" << endl;
 }

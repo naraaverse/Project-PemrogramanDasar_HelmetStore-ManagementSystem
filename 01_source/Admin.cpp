@@ -18,8 +18,16 @@ Admin::~Admin(){
 
 }
 
-bool Admin::loginAdmin(string pass){
-    if (pass == "HelmetStore Jaya") return true;
+bool Admin::loginAdmin(string name, string pass){
+    if (name == "Aurora" && pass == "caffeineaddict") {
+        return true;
+    }
+    else if (name == "Nadya" && pass == "admin2") {
+        return true;
+    }
+    else if (name == "Nada" && pass == "admin3") {
+        return true;
+    }
     return false;
 }
 

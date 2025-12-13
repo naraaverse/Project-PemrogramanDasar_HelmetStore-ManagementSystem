@@ -15,7 +15,7 @@ class Admin : public Catalog
 public:
 	Admin();
 	virtual ~Admin();
-	bool loginAdmin(string pass);
+	bool loginAdmin(string name, string pass);
 	void manageCatalog(Catalog &updatecat);
 
 private:

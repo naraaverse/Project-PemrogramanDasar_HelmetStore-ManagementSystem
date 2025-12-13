@@ -29,6 +29,7 @@ void User::editProfile(){
 	cin >> userNumber;
 	cout << "Enter Bank: ";
 	getline(cin, userBank);
+	cin.ignore();
 	cout << "Profile updated successfully!" << endl;
 }
 

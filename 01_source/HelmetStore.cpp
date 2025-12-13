@@ -8,7 +8,7 @@ void adminMenu(){
     Admin admin;
     int choice;
     do{
-        cout << "\nAdmin Dashboard" << endl;
+        cout << "\n\nAdmin Dashboard" << endl;
         cout << "1. Login" << endl;
         cout << "2. Back to Main Menu" << endl;
         cout << "Choose your option:" << endl;
@@ -23,7 +23,7 @@ void adminMenu(){
                 if (admin.loginAdmin(passAdmin)) {
                     int admOption;
                     do {
-                        cout << "\nWelcome to Admin Panel!" << endl;
+                        cout << "\n\nWelcome to Admin Panel!" << endl;
                         cout << "1. Manage Catalog" << endl;
                         cout << "2. Logout" << endl;
                         cout << "Choice: ";
@@ -69,12 +69,12 @@ void userMenu(){
     User user;
     int choice;
     do{
-        cout << "\nUser Dashboard" << endl;
+        cout << "\n\nUser Dashboard" << endl;
         cout << "1. Login" << endl;
         cout << "2. Register" << endl;
         cout << "3. View Catalog" << endl;
         cout << "4. Back to Main Menu" << endl;
-        cout << "Choose your option:" << endl;
+        cout << "Choose your option:";
         cin >> choice;
         cin.ignore();
 
@@ -83,7 +83,7 @@ void userMenu(){
                 if (user.loginAccount()) {
                     int userOption;
                     do {
-                        cout << "\nHi! What you gonna do?" << endl;
+                        cout << "\n\nHi! What you gonna do?" << endl;
                         cout << "1. Update Profile" << endl;
                         cout << "2. View Profile" << endl;
                         cout << "3. Logout" << endl;
@@ -134,7 +134,7 @@ int main() {
         cout << "2. Login as User" << endl;
         cout << "3. Exit" << endl;
         cout << "======================================\n";
-        cout << "Pilih Menu: ";
+        cout << "Choose Menu: ";
         cin >> mainChoice;
         cin.ignore(); 
 

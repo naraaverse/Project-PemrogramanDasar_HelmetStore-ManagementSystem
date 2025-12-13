@@ -74,7 +74,7 @@ void userMenu(){
         cout << "2. Register" << endl;
         cout << "3. View Catalog" << endl;
         cout << "4. Back to Main Menu" << endl;
-        cout << "Choose your option:";
+        cout << "Choose your option: ";
         cin >> choice;
         cin.ignore();
 

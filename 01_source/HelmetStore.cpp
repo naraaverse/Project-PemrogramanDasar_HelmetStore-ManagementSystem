@@ -11,7 +11,7 @@ void adminMenu(){
         cout << "\nAdmin Dashboard" << endl;
         cout << "1. Login" << endl;
         cout << "2. Back to Main Menu" << endl;
-        cout << "Choose your option:" << endl;
+        cout << "Choose your option: ";
         cin >> choice;
         cin.ignore();
 

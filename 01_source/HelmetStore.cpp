@@ -8,7 +8,7 @@ void adminMenu(){
     Admin admin;
     int choice;
     do{
-        cout << "\n\nAdmin Dashboard" << endl;
+        cout << "\nAdmin Dashboard" << endl;
         cout << "1. Login" << endl;
         cout << "2. Back to Main Menu" << endl;
         cout << "Choose your option:" << endl;
@@ -23,7 +23,7 @@ void adminMenu(){
                 if (admin.loginAdmin(passAdmin)) {
                     int admOption;
                     do {
-                        cout << "\n\nWelcome to Admin Panel!" << endl;
+                        cout << "\nWelcome to Admin Panel!" << endl;
                         cout << "1. Manage Catalog" << endl;
                         cout << "2. Logout" << endl;
                         cout << "Choice: ";
@@ -69,7 +69,7 @@ void userMenu(){
     User user;
     int choice;
     do{
-        cout << "\n\nUser Dashboard" << endl;
+        cout << "\nUser Dashboard" << endl;
         cout << "1. Login" << endl;
         cout << "2. Register" << endl;
         cout << "3. View Catalog" << endl;
@@ -83,7 +83,7 @@ void userMenu(){
                 if (user.loginAccount()) {
                     int userOption;
                     do {
-                        cout << "\n\nHi! What you gonna do?" << endl;
+                        cout << "\nHi! What you gonna do?" << endl;
                         cout << "1. Update Profile" << endl;
                         cout << "2. View Profile" << endl;
                         cout << "3. Logout" << endl;

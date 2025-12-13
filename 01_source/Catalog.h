@@ -9,10 +9,17 @@
 #define CATALOG_H
 
 #include <string>
+#include <iostream>
 using namespace std;
+struct HelmetItem {
+    int availability;
+	string helmetBrand;
+	string helmetColor;
+	double helmetPrice;
+	string helmetType;
+};
 class Catalog
 {
-
 public:
 	Catalog();
 	virtual ~Catalog();
@@ -20,10 +27,6 @@ public:
 	void updateCatalog();
 
 private:
-	int availability;
-	string helmetBrand;
-	string helmetColor;
-	double helmetPrice;
-	string helmetType;
+	HelmetItem helmetList[50];
 };
 #endif // CATALOG_H

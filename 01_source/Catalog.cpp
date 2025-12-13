@@ -9,11 +9,11 @@
 #include <iostream>
 
 Catalog::Catalog(){
-    availability = 10;
-    helmetBrand = "KYT Course";
-    helmetColor = "Blue";
-    helmetPrice = 150000;
-    helmetType = "Full Face";
+    helmetList[0].helmetBrand = "KYT Course";
+    helmetList[0].helmetColor = "Blue";
+    helmetList[0].helmetPrice = 150000;
+    helmetList[0].helmetType = "Full Face";
+    helmetList[0].availability = 10;
 }
 
 Catalog::~Catalog(){
@@ -21,7 +21,7 @@ Catalog::~Catalog(){
 }
 
 void Catalog::updateCatalog(){
-    cout << "Enter Helmet Brand: ";
+    /*cout << "Enter Helmet Brand: ";
     cin >> helmetBrand;
     cout << "Enter Helmet Color: ";
     cin >> helmetColor;
@@ -30,14 +30,14 @@ void Catalog::updateCatalog(){
     cout << "Enter Helmet Type: ";
     cin >> helmetType;
     cout << "Enter Availability (units): ";
-    cin >> availability;
+    cin >> availability; */
 }
 
 void Catalog::displayCatalog(){
-    cout << "\nHelmet Details Information\n";
+    /*cout << "\nHelmet Details Information\n";
     cout << "Brand: " << helmetBrand << endl;
     cout << "Color: " << helmetColor << endl;
     cout << "Price: Rp. " << helmetPrice << endl;
     cout << "Type: " << helmetType << endl;
-    cout << "Availability: " << availability << " units" << endl;
+    cout << "Availability: " << availability << " units" << endl;*/
 }

@@ -10,9 +10,11 @@
 
 #include "Payment.h"
 #include "Catalog.h"
-#include "User.h"
+
 #include <string>
 using namespace std;
+
+class User; // Forward declaration
 class Order
 {
 

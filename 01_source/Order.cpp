@@ -6,13 +6,10 @@
 ///////////////////////////////////////////////////////////
 
 #include "Order.h"
+#include "User.h"
 #include <iostream>
 #include <iomanip>
 using namespace std;
-
-Order::~Order(){
-
-}
 
 void Order::helmetOrder(User &user, Catalog &catalog) {
     catalog.displayCatalog();

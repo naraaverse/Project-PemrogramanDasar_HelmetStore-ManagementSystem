@@ -10,12 +10,12 @@
 
 #include "Registration.h"
 #include "Login.h"
-#include "Order.h"
-#include "Catalog.h"
 #include <string>
 using namespace std;
-class User : public Registration, public Login, public Catalog
-{
+
+class Catalog;
+class Order;
+class User{
 
 public:
 	User();

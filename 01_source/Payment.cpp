@@ -6,21 +6,54 @@
 ///////////////////////////////////////////////////////////
 
 #include "Payment.h"
+#include <windows.h>
+#include <iostream>
+using namespace std;
 
 Payment::Payment(){
-	orderCost = 0.0;
-	orderQuantity = 0;
 }
 
 Payment::~Payment(){
 
 }
 
-double Payment::totalCost(){
-	return orderCost * orderQuantity;
+bool Payment::verifyPayment() {
+    cout << "\n[SYSTEM] Connecting to Payment Gateway";
+    
+    for(int i=0; i<5; i++){
+        cout << ".";
+        Sleep(500);
+    }
+    
+    cout << "\n[SYSTEM] Payment Verified Successfully!" << endl;
+    return true; 
 }
 
-void Payment::setPayment(double price, int quantity){
-	orderCost = price;
-	orderQuantity = quantity;
+bool Payment::processPayment(double totalCost, string &method) {
+    int choice;
+    
+    cout << "\n=== PAYMENT GATEWAY ===" << endl;
+    cout << "Total Bill to Pay : Rp " << (long long)totalCost << endl; 
+    cout << "Select Method:" << endl;
+    cout << "1. QRIS (Scan Barcode)" << endl;
+    cout << "2. Bank Transfer (Virtual Account)" << endl;
+    cout << "3. Cash" << endl;
+    cout << "Choice: ";
+    cin >> choice;
+    cin.ignore();
+
+    if (choice == 1) method = "QRIS";
+    else if (choice == 2) method = "Bank Transfer";
+    else if (choice == 3) method = "Cash";
+    else {
+        cout << "[ERROR] Invalid Payment Method!" << endl;
+        return false; 
+    }
+
+    cout << "\nProcessing " << method << "..." << endl;
+
+    if (verifyPayment()) {
+        return true;
+    }
+    return false;
 }

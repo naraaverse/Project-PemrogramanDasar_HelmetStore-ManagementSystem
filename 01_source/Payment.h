@@ -7,17 +7,18 @@
 
 #ifndef PAYMENT_H
 #define PAYMENT_H
+
+#include <string>
+using namespace std;
 class Payment
 {
 
 public:
 	Payment();
 	virtual ~Payment();
-	void setPayment(double price, int quantity);
-	double totalCost();
+	bool processPayment(double totalCost, string &method);
 
 private:
-	double orderCost;
-	int orderQuantity;
+	bool verifyPayment();
 };
 #endif // PAYMENT_H

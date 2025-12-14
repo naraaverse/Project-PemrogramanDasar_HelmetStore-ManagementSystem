@@ -10,14 +10,10 @@
 #include "Catalog.h"
 #include <iostream>
 #include <iomanip>
+
 using namespace std;
 
 Order::Order() {
-    customerName = "";
-    helmetBrand = "";
-    helmetColor = "";
-    helmetType = "";
-    paymentMethod = "";
 }
 
 Order::~Order() {
@@ -25,35 +21,77 @@ Order::~Order() {
 
 void Order::helmetOrder(User &user, Catalog &catalog) {
     catalog.showListCat();
+
     int helmetChoice;
-    cout << "Select your Helmet: ";
+    cout << "\nSelect your Helmet (Number): ";
     cin >> helmetChoice;
     cin.ignore();
 
     HelmetItem selectedHelmet = catalog.getHelmet(helmetChoice - 1);
-    if (selectedHelmet.helmetBrand == "Invalid") {
-        cout << "Invalid helmet selection." << endl;
+
+    if (selectedHelmet.helmetPrice <= 0) {
+        cout << "[ERROR] Invalid helmet selection." << endl;
+        return;
     }
+
     int quantity;
-    cout << "Detail Helmet Order" << endl;
-    cout << "Customer Name: ";
-    getline(cin, customerName);
-    cout << "Helmet Brand: ";
-    getline(cin, helmetBrand);
-    cout << "Helmet Color: ";
-    cin >> helmetColor;
-    cout << "Helmet Type: ";
-    cin >> helmetType;
     cout << "Purchase Amount: ";
     cin >> quantity;
+    cin.ignore();
 
-    myPayment.setPayment(selectedHelmet.helmetPrice, quantity);
-    double price = myPayment.totalCost(); 
-    cout << "Payment Method (Cash/Transfer/QRIS): ";
-    getline(cin, paymentMethod);
+    if (quantity > selectedHelmet.availability) {
+        cout << "[ERROR] Out of stock!" << endl;
+        return;
+    }
 
-    selectedHelmet.availability -= quantity;
-    catalog.saveToFile();
+    customerName = user.getName();           
+    helmetBrand  = selectedHelmet.helmetBrand;
+    helmetColor  = selectedHelmet.helmetColor;
+    helmetType   = selectedHelmet.helmetType;  
 
-    cout << "TOTAL    : Rp " << fixed << setprecision(0) << price << endl;
+    double price = selectedHelmet.helmetPrice * quantity;
+
+    cout << "\n===============================" << endl;
+    cout << "      DETAIL HELMET ORDER      " << endl;
+    cout << "===============================" << endl;
+    cout << "Customer Name : " << customerName << endl;
+    cout << "Helmet Brand  : " << helmetBrand << endl;
+    cout << "Helmet Color  : " << helmetColor << endl;
+    cout << "Helmet Type   : " << helmetType << endl;
+    cout << "Quantity      : " << quantity << endl;
+    cout << "Total Price   : Rp " << fixed << setprecision(0) << price << endl;
+    cout << "===============================" << endl;
+
+    cout << "Confirm purchase? (y/n): ";
+    string confirm;
+    getline(cin, confirm);
+
+    if (confirm != "y" && confirm != "Y") {
+        cout << "Order Cancelled." << endl;
+        return;
+    }
+
+    if (myPayment.processPayment(price, paymentMethod)) {
+        
+        selectedHelmet.availability -= quantity; 
+        
+        cout << "\n###################################" << endl;
+        cout << "         OFFICIAL RECEIPT          " << endl;
+        cout << "###################################" << endl;
+        cout << "Customer : " << customerName << endl;
+        cout << "Item     : " << helmetBrand << " (" << helmetColor << ")" << endl;
+        cout << "Qty      : " << quantity << endl;
+        cout << "Total    : Rp " << fixed << setprecision(0) << price << endl;
+        cout << "Payment  : " << paymentMethod << " [PAID]" << endl;
+        cout << "###################################" << endl;
+        cout << "        Thank You!                 " << endl;
+
+        catalog.saveToFile(); 
+
+    } else {
+        cout << "[FAILED] Transaction Failed." << endl;
+    }
+
+    cout << "\nPress Enter to return...";
+    string pause; getline(cin, pause);
 }

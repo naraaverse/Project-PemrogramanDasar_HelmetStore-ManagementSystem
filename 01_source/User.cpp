@@ -6,6 +6,7 @@
 ///////////////////////////////////////////////////////////
 
 #include "User.h"
+#include "Catalog.h"
 #include <iostream>
 
 User::User(){

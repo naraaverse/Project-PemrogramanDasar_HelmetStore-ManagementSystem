@@ -32,5 +32,6 @@ private:
 	string userBank;
 	string userName;
 	string userNumber;
+	void verifyData();
 };
 #endif // USER_H

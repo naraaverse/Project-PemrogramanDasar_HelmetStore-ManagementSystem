@@ -19,6 +19,8 @@ class Order
 {
 
 public:
+	Order();
+	virtual ~Order();
 	void helmetOrder(User &user, Catalog &catalog);
 
 private:

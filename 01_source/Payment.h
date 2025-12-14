@@ -12,6 +12,7 @@ class Payment
 
 public:
 	Payment();
+	virtual ~Payment();
 	void setPayment(double price, int quantity);
 	double totalCost();
 

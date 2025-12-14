@@ -12,6 +12,17 @@
 #include <iomanip>
 using namespace std;
 
+Order::Order() {
+    customerName = "";
+    helmetBrand = "";
+    helmetColor = "";
+    helmetType = "";
+    paymentMethod = "";
+}
+
+Order::~Order() {
+}
+
 void Order::helmetOrder(User &user, Catalog &catalog) {
     catalog.displayCatalog();
     int helmetChoice;

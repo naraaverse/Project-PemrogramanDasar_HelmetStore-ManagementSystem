@@ -9,16 +9,15 @@
 #define ORDER_H
 
 #include "Payment.h"
+#include "Catalog.h"
+#include "User.h"
 #include <string>
 using namespace std;
 class Order
 {
 
 public:
-	Order();
-	virtual ~Order();
-	Payment *m_Payment;
-	void helmetOrder();
+	void helmetOrder(User &user, Catalog &catalog);
 
 private:
 	string customerName;
@@ -26,5 +25,6 @@ private:
 	string helmetColor;
 	string helmetType;
 	string paymentMethod;
+	Payment myPayment;
 };
 #endif // ORDER_H

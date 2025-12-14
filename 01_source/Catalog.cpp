@@ -180,3 +180,13 @@ void Catalog::saveToFile(){
     }
     file.close();
 }
+
+HelmetItem Catalog::getHelmet(int index) {
+    if (index >= 0 && index < totalHelm) {
+        return helmetList[index];
+    } else {
+        HelmetItem empty;
+        empty.helmetBrand = "Invalid";
+        return empty;
+    }
+}

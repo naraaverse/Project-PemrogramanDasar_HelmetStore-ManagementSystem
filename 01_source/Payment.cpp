@@ -19,3 +19,8 @@ Payment::~Payment(){
 double Payment::totalCost(){
 	return orderCost * orderQuantity;
 }
+
+void Payment::setPayment(double price, int quantity){
+	orderCost = price;
+	orderQuantity = quantity;
+}

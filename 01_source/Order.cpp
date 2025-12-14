@@ -7,20 +7,25 @@
 
 #include "Order.h"
 #include <iostream>
-
-Order::Order(){
-    customerName = "";
-    helmetBrand = "";
-    helmetColor = "";
-    helmetType = "";
-    paymentMethod = "";
-}
+#include <iomanip>
+using namespace std;
 
 Order::~Order(){
 
 }
 
-void Order::helmetOrder(){
+void Order::helmetOrder(User &user, Catalog &catalog) {
+    catalog.displayCatalog();
+    int helmetChoice;
+    cout << "Select your Helmet: ";
+    cin >> helmetChoice;
+    cin.ignore();
+
+    HelmetItem selectedHelmet = catalog.getHelmet(helmetChoice - 1);
+    if (selectedHelmet.helmetBrand == "Invalid") {
+        cout << "Invalid helmet selection." << endl;
+    }
+    int quantity;
     cout << "Detail Helmet Order" << endl;
     cout << "Customer Name: ";
     getline(cin, customerName);
@@ -30,6 +35,16 @@ void Order::helmetOrder(){
     cin >> helmetColor;
     cout << "Helmet Type: ";
     cin >> helmetType;
-    cout << "Payment Method: ";
-    cin >> paymentMethod;
+    cout << "Purchase Amount: ";
+    cin >> quantity;
+
+    myPayment.setPayment(selectedHelmet.helmetPrice, quantity);
+    double price = myPayment.totalCost(); 
+    cout << "Payment Method (Cash/Transfer/QRIS): ";
+    getline(cin, paymentMethod);
+
+    selectedHelmet.availability -= quantity;
+    catalog.saveToFile();
+
+    cout << "TOTAL    : Rp " << fixed << setprecision(0) << price << endl;
 }

@@ -25,10 +25,12 @@ public:
 	virtual ~Catalog();
 	void displayCatalog();
 	void updateCatalog();
+	void saveToFile();
+	HelmetItem getHelmet(int index);
 
 private:
 	HelmetItem helmetList[50];
 	int totalHelm;
-	void saveToFile();
+
 };
 #endif // CATALOG_H

@@ -1,10 +1,11 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include "Admin.h"
 #include "User.h"
 #include "Catalog.h"
+#include "Order.h"
 using namespace std;
 
-void adminMenu(){
+void adminMenu(Catalog &catalog){
     Admin admin;
     int choice;
     do{
@@ -34,8 +35,7 @@ void adminMenu(){
 
                         switch (admOption) {
                             case 1: {
-                                Catalog updatecat;
-                                admin.manageCatalog(updatecat);
+                                admin.manageCatalog(catalog);
                                 break; 
                             }
                             case 2: {
@@ -67,7 +67,7 @@ void adminMenu(){
     }while(choice != 2);
 }
 
-void userMenu(){
+void userMenu(Catalog &catalog){
     User user;
     int choice;
     do{
@@ -88,7 +88,8 @@ void userMenu(){
                         cout << "\nHi! What you gonna do?" << endl;
                         cout << "1. Update Profile" << endl;
                         cout << "2. View Profile" << endl;
-                        cout << "3. Logout" << endl;
+                        cout << "3. Order Helmet" << endl;
+                        cout << "0. Logout" << endl;
                         cout << "Choice: ";
                         cin >> userOption;
                         cin.ignore();
@@ -98,6 +99,9 @@ void userMenu(){
                         } else if (userOption == 2) {
                             user.viewProfile();
                         } else if (userOption == 3) {
+                            Order newOrder;
+                            newOrder.helmetOrder(user, catalog);
+                        } else if (userOption == 0) {
                             cout << "Logging out" << endl;
                         } else {
                             cout << "Invalid option." << endl;
@@ -111,8 +115,7 @@ void userMenu(){
                 break;
 
             case 3:{
-                Catalog viewcat;
-                user.viewCatalog(viewcat);
+                user.viewCatalog(catalog);
                 break;
             }
             case 4:
@@ -126,6 +129,7 @@ void userMenu(){
 }
 
 int main() {
+    Catalog shopCatalog;
     int mainChoice;
 
     do {
@@ -142,10 +146,10 @@ int main() {
 
         switch (mainChoice) {
             case 1:
-                adminMenu(); 
+                adminMenu(shopCatalog); 
                 break;
             case 2:
-                userMenu();
+                userMenu(shopCatalog);
                 break;
             case 3:
                 cout << "Thank you for visiting this site! Have a nice day ^_^" << endl;

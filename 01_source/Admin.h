@@ -17,6 +17,7 @@ public:
 	virtual ~Admin();
 	bool loginAdmin(string name, string pass);
 	void manageCatalog(Catalog &updatecat);
+	void manageUsers();
 
 private:
 };

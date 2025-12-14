@@ -9,6 +9,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 Catalog::Catalog(){
@@ -69,7 +70,9 @@ void Catalog::displayCatalog(){
         for (int i = 0; i < totalHelm; i++) {
             cout << (i + 1) << ". " << helmetList[i].helmetBrand 
                  << " - " << helmetList[i].helmetColor 
-                 << " (Rp " << helmetList[i].helmetPrice << ")" << endl;
+                 << " [" << helmetList[i].helmetType << "] "
+                 << " (Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice << ")"
+                 << "Stok:" << helmetList[i].availability << endl;
         }
         cout << "0. Back to Menu" << endl;
         cout << "Select number to view details: ";
@@ -80,9 +83,10 @@ void Catalog::displayCatalog(){
             cout << "\n--- HELM DETAILS SPECIFICATION ---" << endl;
             cout << "Brand        : " << helmetList[index].helmetBrand << endl;
             cout << "Color        : " << helmetList[index].helmetColor << endl;
-            cout << "Price        : Rp " << helmetList[index].helmetPrice << endl;
+            cout << "Price        : Rp " << fixed << setprecision(0) << helmetList[index].helmetPrice << endl;
             cout << "Type         : " << helmetList[index].helmetType << endl;
             cout << "Availability : " << helmetList[index].availability << " units" << endl;
+            
             cout << "------------------------" << endl;
             cout << "Click Enter to return to Catalog";
             string enterKey;

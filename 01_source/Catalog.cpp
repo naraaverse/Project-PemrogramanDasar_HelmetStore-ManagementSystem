@@ -50,17 +50,85 @@ Catalog::~Catalog(){
 
 }
 
-void Catalog::updateCatalog(){
-    /*cout << "Enter Helmet Brand: ";
-    cin >> helmetBrand;
-    cout << "Enter Helmet Color: ";
-    cin >> helmetColor;
-    cout << "Enter Helmet Price: ";
-    cin >> helmetPrice;
-    cout << "Enter Helmet Type: ";
-    cin >> helmetType;
-    cout << "Enter Availability (units): ";
-    cin >> availability; */
+void Catalog::updateCatalog() {
+    int choice;
+    do {
+        cout << "\n=== ADMIN: MANAGE CATALOG ===" << endl;
+        cout << "1. Add New Helmet" << endl;
+        cout << "2. Edit Existing Helmet (Stock/Price)" << endl;
+        cout << "0. Back to Admin Menu" << endl;
+        cout << "Choice: ";
+        cin >> choice;
+        cin.ignore();
+
+        if (choice == 1) {
+            if (totalHelm >= 50) {
+                cout << "[FULL] Can't add any more helmets." << endl;
+            } else {
+                cout << "\n--- ADD NEW HELM ---" << endl;
+                
+                cout << "Enter Brand : "; 
+                getline(cin, helmetList[totalHelm].helmetBrand);
+                
+                cout << "Enter Color : "; 
+                getline(cin, helmetList[totalHelm].helmetColor);
+                
+                cout << "Enter Type  : "; 
+                getline(cin, helmetList[totalHelm].helmetType);
+                
+                cout << "Enter Price : "; 
+                cin >> helmetList[totalHelm].helmetPrice;
+                
+                cout << "Enter Stock : "; 
+                cin >> helmetList[totalHelm].availability;
+                cin.ignore();
+
+                totalHelm++;
+                saveToFile();
+                
+                cout << "[SUCCESS] New helmet successfully added!" << endl;
+                string pause; getline(cin, pause);
+            }
+        }
+        else if (choice == 2) {
+            cout << "\n--- HELMET LIST ---" << endl;
+            for (int i = 0; i < totalHelm; i++) {
+                 cout << (i + 1) << ". " << helmetList[i].helmetBrand 
+                      << " (Stock: " << helmetList[i].availability << ")" << endl;
+            }
+            int editIndex;
+            cout << "Select the helmet number you want to edit: ";
+            cin >> editIndex;
+            cin.ignore();
+
+            if (editIndex > 0 && editIndex <= totalHelm) {
+                int idx = editIndex - 1;
+                
+                cout << "\nEdit Data: " << helmetList[idx].helmetBrand << endl;
+                cout << "1. Stock Update" << endl;
+                cout << "2. Price Update" << endl;
+                cout << "Choice: ";
+                int subChoice;
+                cin >> subChoice;
+
+                if (subChoice == 1) {
+                    cout << "New stock: ";
+                    cin >> helmetList[idx].availability;
+                    saveToFile();
+                    cout << "[UPDATED] Stock changed successfully!" << endl;
+                } 
+                else if (subChoice == 2) {
+                    cout << "New price: ";
+                    cin >> helmetList[idx].helmetPrice;
+                    saveToFile();
+                    cout << "[UPDATED] Price changed sucessfully!" << endl;
+                }
+                cin.ignore();
+                string pause; getline(cin, pause);
+            }
+        }
+
+    } while (choice != 0);
 }
 
 void Catalog::displayCatalog(){
@@ -86,11 +154,28 @@ void Catalog::displayCatalog(){
             
             cout << "------------------------" << endl;
             cout << "Click Enter to return to Catalog";
-            string enterKey;
-            getline(cin, enterKey);
+            string pause; getline(cin, pause);
         } else if (option != 0) {
             cout << "Invalid number!" << endl;
         }
 
     } while (option != 0);
+}
+
+void Catalog::saveToFile(){
+    ofstream file("../02_data/data_helm.csv");
+    if (!file.is_open()) {
+        cout << "[ERROR] Unable to open database!" << endl;
+        return;
+    }
+
+    file << "Brand,Color,Price,Type,Availability" << endl;
+    for (int i = 0; i < totalHelm; i++) {
+        file << helmetList[i].helmetBrand << ","
+             << helmetList[i].helmetColor << ","
+             << helmetList[i].helmetPrice << ","
+             << helmetList[i].helmetType << ","
+             << helmetList[i].availability << endl;
+    }
+    file.close();
 }

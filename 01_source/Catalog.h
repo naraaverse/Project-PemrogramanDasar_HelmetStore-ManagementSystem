@@ -29,5 +29,6 @@ public:
 private:
 	HelmetItem helmetList[50];
 	int totalHelm;
+	void saveToFile();
 };
 #endif // CATALOG_H

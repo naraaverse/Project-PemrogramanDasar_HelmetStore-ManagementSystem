@@ -24,7 +24,7 @@ Order::~Order() {
 }
 
 void Order::helmetOrder(User &user, Catalog &catalog) {
-    catalog.displayCatalog();
+    catalog.showListCat();
     int helmetChoice;
     cout << "Select your Helmet: ";
     cin >> helmetChoice;

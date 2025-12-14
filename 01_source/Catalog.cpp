@@ -163,6 +163,16 @@ void Catalog::displayCatalog(){
     } while (option != 0);
 }
 
+void Catalog::showListCat(){
+    cout << "\n=== CATALOG LIST ===" << endl;
+    for (int i = 0; i < totalHelm; i++) {
+        cout << (i + 1) << ". " << helmetList[i].helmetBrand
+             << " - " << helmetList[i].helmetColor
+             << " (Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice << ") " 
+             << "Stok: " << helmetList[i].availability << endl;
+    }
+}
+
 void Catalog::saveToFile(){
     ofstream file("../02_data/data_helm.csv");
     if (!file.is_open()) {

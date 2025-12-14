@@ -23,8 +23,11 @@ class Catalog
 public:
 	Catalog();
 	virtual ~Catalog();
+
 	void displayCatalog();
+	void showListCat();
 	void updateCatalog();
+
 	void saveToFile();
 	HelmetItem getHelmet(int index);
 

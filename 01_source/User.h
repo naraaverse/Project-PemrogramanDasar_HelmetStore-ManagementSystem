@@ -8,9 +8,8 @@
 #ifndef USER_H
 #define USER_H
 
-#include "Registration.h"
-#include "Login.h"
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Catalog;
@@ -21,16 +20,21 @@ public:
 	User();
 	virtual ~User();
 	Order *m_Order;
-	void editProfile();
+
 	bool loginAccount();
 	void registerAccount();
+
+	void editProfile();
 	void viewProfile();
 	void viewCatalog(Catalog &viewcat);
 
+	string getName();
+
 private:
-	string userAddress;
-	string userBank;
 	string userName;
-	string userNumber;
+	string userPass;
+	string address;
+	string fullName;
+	string phoneNumber;
 };
 #endif // USER_H

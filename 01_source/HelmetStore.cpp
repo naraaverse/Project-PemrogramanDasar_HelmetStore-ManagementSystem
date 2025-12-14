@@ -85,7 +85,7 @@ void userMenu(Catalog &catalog){
                 if (user.loginAccount()) {
                     int userOption;
                     do {
-                        cout << "\nHi! What you gonna do?" << endl;
+                        cout << "\nHi " << user.getName() << "! What you gonna do?" << endl;
                         cout << "1. Update Profile" << endl;
                         cout << "2. View Profile" << endl;
                         cout << "3. Order Helmet" << endl;

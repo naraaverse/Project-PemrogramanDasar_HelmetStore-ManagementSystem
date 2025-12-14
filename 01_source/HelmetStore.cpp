@@ -1,87 +1,118 @@
 #include <iostream>
+#include <windows.h>
+#include <iomanip>
 #include "Admin.h"
 #include "User.h"
 #include "Catalog.h"
 #include "Order.h"
+
 using namespace std;
+
+void showHeader() {
+    system("cls");
+    cout << "================================================================" << endl;
+    cout << "  _    _      _                  _     _____ _                  " << endl;
+    cout << " | |  | |    | |                | |   / ____| |                 " << endl;
+    cout << " | |__| | ___| | |_ __ ___   ___| |_ | (___ | |_ ___  _ __ ___  " << endl;
+    cout << " |  __  |/ _ \\ | | '_ ` _ \\ / _ \\ __| \\___ \\| __/ _ \\| '__/ _ \\ " << endl;
+    cout << " | |  | |  __/ | | | | | | |  __/ |_  ____) | || (_) | | |  __/ " << endl;
+    cout << " |_|  |_|\\___|_|_|_| |_| |_|\\___|\\__|/_____/ \\__\\___/|_|  \\___| " << endl;
+    cout << "                                                                " << endl;
+    cout << "          PREMIUM HELMET STORE MANAGEMENT SYSTEM v1.0           " << endl;
+    cout << "================================================================" << endl;
+}
 
 void adminMenu(Catalog &catalog){
     Admin admin;
     int choice;
     do{
-        cout << "\nAdmin Dashboard" << endl;
-        cout << "1. Login" << endl;
-        cout << "2. Back to Main Menu" << endl;
-        cout << "Choose your option: ";
+        system("cls");
+        cout << "\n";
+        cout << "\t+=======================================+" << endl;
+        cout << "\t|            ADMIN DASHBOARD            |" << endl;
+        cout << "\t+=======================================+" << endl;
+        cout << "\t| 1. Login to Panel                     |" << endl;
+        cout << "\t| 2. Back to Main Menu                  |" << endl;
+        cout << "\t+=======================================+" << endl;
+        cout << "\t Choice: ";
         cin >> choice;
         cin.ignore();
 
         switch(choice){
             case 1:{
                 string nameAdmin, passAdmin;
-                cout << "\nEnter Admin Name: ";
-                getline(cin, nameAdmin);
-                cout << "Enter Admin Password: ";
-                getline(cin, passAdmin);
+                system("cls");
+                cout << "\n\t--- ADMIN LOGIN REQUIRED ---" << endl;
+                cout << "\tUsername: "; getline(cin, nameAdmin);
+                cout << "\tPassword: "; getline(cin, passAdmin);
+                
+                cout << "\n\tVerifying Credentials..." << endl;
+                Sleep(800);
+
                 if (admin.loginAdmin(nameAdmin, passAdmin)) {
                     int admOption;
                     do {
-                        cout << "\nWelcome to Admin Panel!" << endl;
-                        cout << "1. Manage Catalog" << endl;
-                        cout << "2. Manage Users" << endl;
-                        cout << "3. Logout" << endl;
-                        cout << "Choice: ";
+                        system("cls");
+                        cout << "\n+------------------------------------------+" << endl;
+                        cout << "|            ADMIN CONTROL PANEL           |" << endl;
+                        cout << "+------------------------------------------+" << endl;
+                        cout << "| 1. Manage Catalog (Add/Edit/Stock)       |" << endl;
+                        cout << "| 2. Manage Users (View/Delete)            |" << endl;
+                        cout << "| 0. Logout                                |" << endl;
+                        cout << "+------------------------------------------+" << endl;
+                        cout << " Select Option: ";
                         cin >> admOption;
                         cin.ignore();
 
                         switch (admOption) {
-                            case 1: {
+                            case 1: 
                                 admin.manageCatalog(catalog);
                                 break; 
-                            }
-                            case 2: {
+                            case 2: 
                                 admin.manageUsers();
                                 break; 
-                            }
-                            case 3: {
-                                string answer;
-                                cout << "Are you sure? (yes/no): ";
-                                cin >> answer;
-                                if (answer == "yes") {
-                                    cout << "Logged out successfully!" << endl;
-                                    admOption = 0;
-                                } else {
-                                    cout << "Returning to Admin Panel" << endl;
-                                }
+                            case 0: {
+                                cout << "\nLogging out..." << endl;
+                                Sleep(1000);
                                 break;
                             }
                             default:
-                                cout << "Invalid option. Please try again." << endl;
+                                cout << "Invalid option." << endl;
+                                Sleep(1000);
                         }
                     } while (admOption != 0);
                 }
                 else {
-                    cout << "Incorrect Name or Password. Access Denied." << endl;
+                    cout << "\n\t[ACCESS DENIED] Incorrect Credentials!" << endl;
+                    Sleep(1500);
                 }
-            break;
+                break;
             }
             case 2:
-                cout << "Returning to Main Menu" << endl;
+                // Return to Main
                 break;
+            default:
+                cout << "Invalid choice." << endl;
+                Sleep(800);
         }
-    }while(choice != 2);
+    } while(choice != 2);
 }
 
 void userMenu(Catalog &catalog){
     User user;
     int choice;
     do{
-        cout << "\nUser Dashboard" << endl;
-        cout << "1. Login" << endl;
-        cout << "2. Register" << endl;
-        cout << "3. View Catalog" << endl;
-        cout << "4. Back to Main Menu" << endl;
-        cout << "Choose your option: ";
+        system("cls");
+        cout << "\n";
+        cout << "\t+=======================================+" << endl;
+        cout << "\t|             USER DASHBOARD            |" << endl;
+        cout << "\t+=======================================+" << endl;
+        cout << "\t| 1. Login                              |" << endl;
+        cout << "\t| 2. Register New Account               |" << endl;
+        cout << "\t| 3. View Catalog (Guest)               |" << endl;
+        cout << "\t| 4. Back to Main Menu                  |" << endl;
+        cout << "\t+=======================================+" << endl;
+        cout << "\t Choice: ";
         cin >> choice;
         cin.ignore();
 
@@ -90,28 +121,34 @@ void userMenu(Catalog &catalog){
                 if (user.loginAccount()) {
                     int userOption;
                     do {
-                        cout << "\nHi " << user.getName() << "! What you gonna do?" << endl;
-                        cout << "1. Update Profile" << endl;
-                        cout << "2. View Profile" << endl;
-                        cout << "3. Order Helmet" << endl;
-                        cout << "0. Logout" << endl;
-                        cout << "Choice: ";
+                        system("cls");
+                        cout << "\n========================================" << endl;
+                        cout << " Welcome, " << user.getName() << "!" << endl;
+                        cout << "========================================" << endl;
+                        cout << " 1. My Profile (View)" << endl;
+                        cout << " 2. Edit Profile" << endl;
+                        cout << " 3. Order Helmet (Shop)" << endl;
+                        cout << " 0. Logout" << endl;
+                        cout << "----------------------------------------" << endl;
+                        cout << " What would you like to do? ";
                         cin >> userOption;
                         cin.ignore();
 
                         if (userOption == 1) {
-                            user.editProfile();
-                        } else if (userOption == 2) {
                             user.viewProfile();
+                        } else if (userOption == 2) {
+                            user.editProfile();
                         } else if (userOption == 3) {
                             Order newOrder;
                             newOrder.helmetOrder(user, catalog);
                         } else if (userOption == 0) {
-                            cout << "Logging out" << endl;
+                            cout << "\nLogging out... See you soon!" << endl;
+                            Sleep(1000);
                         } else {
-                            cout << "Invalid option." << endl;
+                            cout << "[!] Invalid option." << endl;
+                            Sleep(800);
                         }
-                    } while (userOption != 3);
+                    } while (userOption != 0);
                 }
                 break; 
             }
@@ -119,33 +156,32 @@ void userMenu(Catalog &catalog){
                 user.registerAccount();
                 break;
 
-            case 3:{
+            case 3:
                 user.viewCatalog(catalog);
                 break;
-            }
+
             case 4:
-                cout << "Returning to Main Menu" << endl;
                 break;
 
             default:
                 cout << "Invalid choice. Please try again." << endl;
+                Sleep(800);
         }
     } while (choice != 4);
 }
 
 int main() {
+    system("title Helmet Store Management System");
+    
     Catalog shopCatalog;
     int mainChoice;
 
     do {
-        cout << "\n======================================\n";
-        cout << "   HELMET STORE MANAGEMENT SYSTEM     " << endl;
-        cout << "======================================\n";
-        cout << "1. Login as Admin" << endl;
-        cout << "2. Login as User" << endl;
-        cout << "3. Exit" << endl;
-        cout << "======================================\n";
-        cout << "Choose Menu: ";
+        showHeader();
+        cout << "\t[1] Login as Admin" << endl;
+        cout << "\t[2] Login as User / Guest" << endl;
+        cout << "\t[0] Exit Application" << endl;
+        cout << "\n\tSelect Role > ";
         cin >> mainChoice;
         cin.ignore(); 
 
@@ -156,12 +192,20 @@ int main() {
             case 2:
                 userMenu(shopCatalog);
                 break;
-            case 3:
-                cout << "Thank you for visiting this site! Have a nice day ^_^" << endl;
+            case 0:
+                system("cls");
+                cout << "\n\n\n";
+                cout << "\t==============================================" << endl;
+                cout << "\t   THANK YOU FOR USING OUR SYSTEM. BYE! ^_^   " << endl;
+                cout << "\t==============================================" << endl;
+                cout << "\n\n";
+                Sleep(1000);
                 break;
             default:
-                cout << "Invalid choice! Please try again." << endl;
+                cout << "\n\t[!] Invalid choice! Please try again." << endl;
+                Sleep(1000);
         }
-    } while (mainChoice != 3);
+    } while (mainChoice != 0);
 
+    return 0;
 }

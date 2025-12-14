@@ -10,6 +10,8 @@
 #include <sstream>
 #include <iostream>
 #include <iomanip>
+#include <windows.h>
+
 using namespace std;
 
 Catalog::Catalog(){
@@ -32,7 +34,7 @@ Catalog::Catalog(){
         getline(ss, color, ',');
         getline(ss, price, ',');
         getline(ss, type, ',');
-        getline(ss, availability, ',');\
+        getline(ss, availability, ',');
 
         if(totalHelm < 50) {
             helmetList[totalHelm].helmetBrand = brand;
@@ -47,85 +49,91 @@ Catalog::Catalog(){
 }
 
 Catalog::~Catalog(){
-
 }
 
 void Catalog::updateCatalog() {
     int choice;
     do {
-        cout << "\n=== ADMIN: MANAGE CATALOG ===" << endl;
-        cout << "1. Add New Helmet" << endl;
-        cout << "2. Edit Existing Helmet (Stock/Price)" << endl;
-        cout << "0. Back to Admin Menu" << endl;
+        system("cls");
+        cout << "+------------------------------------------+" << endl;
+        cout << "|        HELMET INVENTORY MANAGER          |" << endl;
+        cout << "+------------------------------------------+" << endl;
+        cout << "| 1. Add New Helmet                        |" << endl;
+        cout << "| 2. Edit Stock / Price                    |" << endl;
+        cout << "| 0. Back to Admin Menu                    |" << endl;
+        cout << "+------------------------------------------+" << endl;
         cout << "Choice: ";
         cin >> choice;
         cin.ignore();
 
         if (choice == 1) {
             if (totalHelm >= 50) {
-                cout << "[FULL] Can't add any more helmets." << endl;
+                cout << "\n[!] STORAGE FULL: Capacity reached (50/50)." << endl;
+                system("pause");
             } else {
-                cout << "\n--- ADD NEW HELM ---" << endl;
+                cout << "\n--- ADD NEW ITEM ENTRY ---" << endl;
                 
-                cout << "Enter Brand : "; 
+                cout << "Brand Name : "; 
                 getline(cin, helmetList[totalHelm].helmetBrand);
                 
-                cout << "Enter Color : "; 
+                cout << "Color      : "; 
                 getline(cin, helmetList[totalHelm].helmetColor);
                 
-                cout << "Enter Type  : "; 
+                cout << "Type       : "; 
                 getline(cin, helmetList[totalHelm].helmetType);
                 
-                cout << "Enter Price : "; 
+                cout << "Price (Rp) : "; 
                 cin >> helmetList[totalHelm].helmetPrice;
                 
-                cout << "Enter Stock : "; 
+                cout << "Stock Qty  : "; 
                 cin >> helmetList[totalHelm].availability;
                 cin.ignore();
 
                 totalHelm++;
                 saveToFile();
                 
-                cout << "[SUCCESS] New helmet successfully added!" << endl;
-                string pause; getline(cin, pause);
+                cout << "\n[SAVING]";
+                for(int i = 0; i < 3; i++){ cout << "."; Sleep(200); }
+                cout << "\n[SUCCESS] New helmet added to database!" << endl;
+                Sleep(1000);
             }
         }
         else if (choice == 2) {
-            cout << "\n--- HELMET LIST ---" << endl;
-            for (int i = 0; i < totalHelm; i++) {
-                 cout << (i + 1) << ". " << helmetList[i].helmetBrand
-                      << " - Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice
-                      << " (Stock: " << helmetList[i].availability << ")" << endl;
-            }
+            showListCat(); 
+            
             int editIndex;
-            cout << "Select the helmet number you want to edit: ";
+            cout << "\nSelect Number to Edit (0 Cancel): ";
             cin >> editIndex;
             cin.ignore();
 
             if (editIndex > 0 && editIndex <= totalHelm) {
                 int idx = editIndex - 1;
                 
-                cout << "\nEdit Data: " << helmetList[idx].helmetBrand << endl;
-                cout << "1. Stock Update" << endl;
-                cout << "2. Price Update" << endl;
+                system("cls");
+                cout << "\nEDITING: " << helmetList[idx].helmetBrand << " (" << helmetList[idx].helmetColor << ")" << endl;
+                cout << "---------------------------------" << endl;
+                cout << "1. Update Stock Only" << endl;
+                cout << "2. Update Price Only" << endl;
                 cout << "Choice: ";
                 int subChoice;
                 cin >> subChoice;
 
                 if (subChoice == 1) {
-                    cout << "New stock: ";
+                    cout << "Current Stock: " << helmetList[idx].availability << endl;
+                    cout << "New Stock    : ";
                     cin >> helmetList[idx].availability;
                     saveToFile();
-                    cout << "[UPDATED] Stock changed successfully!" << endl;
+                    cout << "[UPDATED] Stock updated successfully!" << endl;
                 } 
                 else if (subChoice == 2) {
-                    cout << "New price: ";
+                    cout << "Current Price: " << (long long)helmetList[idx].helmetPrice << endl;
+                    cout << "New Price    : ";
                     cin >> helmetList[idx].helmetPrice;
                     saveToFile();
-                    cout << "[UPDATED] Price changed sucessfully!" << endl;
+                    cout << "[UPDATED] Price updated successfully!" << endl;
                 }
                 cin.ignore();
-                string pause; getline(cin, pause);
+                Sleep(1000);
             }
         }
 
@@ -136,47 +144,66 @@ void Catalog::displayCatalog(){
     int option;
 
     do {
-        cout << "\n=== CATALOG LIST ===" << endl;
-        for (int i = 0; i < totalHelm; i++) {
-            cout << (i + 1) << ". " << helmetList[i].helmetBrand << endl;
-        }
-        cout << "0. Back to Menu" << endl;
-        cout << "Select number to view details: ";
+        system("cls");
+        showListCat(); 
+        
+        cout << "\n[MENU OPTIONS]" << endl;
+        cout << "Enter Number to View Details (0 Back): ";
         cin >> option;
         cin.ignore();
+
         if (option > 0 && option <= totalHelm) {
             int index = option - 1;
-            cout << "\n--- HELM DETAILS SPECIFICATION ---" << endl;
-            cout << "Brand        : " << helmetList[index].helmetBrand << endl;
-            cout << "Color        : " << helmetList[index].helmetColor << endl;
-            cout << "Price        : Rp " << fixed << setprecision(0) << helmetList[index].helmetPrice << endl;
-            cout << "Type         : " << helmetList[index].helmetType << endl;
-            cout << "Availability : " << helmetList[index].availability << " units" << endl;
             
-            cout << "------------------------" << endl;
-            cout << "Click Enter to return to Catalog";
+            system("cls");
+            cout << "\n";
+            cout << "\t+=======================================+" << endl;
+            cout << "\t|         PRODUCT SPECIFICATION         |" << endl;
+            cout << "\t+=======================================+" << endl;
+            cout << "\t|                                       |" << endl;
+            cout << "\t|  Brand   : " << left << setw(26) << helmetList[index].helmetBrand << "|" << endl;
+            cout << "\t|  Type    : " << left << setw(26) << helmetList[index].helmetType << "|" << endl;
+            cout << "\t|  Color   : " << left << setw(26) << helmetList[index].helmetColor << "|" << endl;
+            cout << "\t|  Stock   : " << left << setw(26) << helmetList[index].availability << "|" << endl;
+            cout << "\t|                                       |" << endl;
+            cout << "\t|  PRICE   : Rp " << left << setw(21) << (long long)helmetList[index].helmetPrice << "|" << endl;
+            cout << "\t|                                       |" << endl;
+            cout << "\t+=======================================+" << endl;
+            
+            cout << "\n\t   [Press Enter to return to Catalog]";
             string pause; getline(cin, pause);
+            
         } else if (option != 0) {
-            cout << "Invalid number!" << endl;
+            cout << "\n[!] Invalid input number!" << endl;
+            Sleep(800);
         }
 
     } while (option != 0);
 }
 
 void Catalog::showListCat(){
-    cout << "\n=== CATALOG LIST ===" << endl;
+    cout << "\n=== HELMET CATALOG COLLECTION ===" << endl;
+    
+    cout << "+----+--------------------------+---------------+---------------+-------+" << endl;
+    cout << "| No | Brand Name               | Color         | Price (Rp)    | Stock |" << endl;
+    cout << "+----+--------------------------+---------------+---------------+-------+" << endl;
+
     for (int i = 0; i < totalHelm; i++) {
-        cout << (i + 1) << ". " << helmetList[i].helmetBrand
-             << " - " << helmetList[i].helmetColor
-             << " (Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice << ") " 
-             << "Stok: " << helmetList[i].availability << endl;
+        string stockAlert = (helmetList[i].availability < 5) ? " (!)" : ""; 
+        
+        cout << "| " << left << setw(2) << (i + 1) 
+             << " | " << left << setw(24) << helmetList[i].helmetBrand
+             << " | " << left << setw(13) << helmetList[i].helmetColor
+             << " | " << right << setw(11) << (long long)helmetList[i].helmetPrice << "   " // Harga rata kanan
+             << " | " << left << setw(3) << helmetList[i].availability << stockAlert << " |" << endl;
     }
+    cout << "+----+--------------------------+---------------+---------------+-------+" << endl;
 }
 
 void Catalog::saveToFile(){
     ofstream file("../02_data/data_helm.csv");
     if (!file.is_open()) {
-        cout << "[ERROR] Unable to open database!" << endl;
+        cout << "[ERROR] Unable to open database for writing!" << endl;
         return;
     }
 
@@ -197,6 +224,7 @@ HelmetItem Catalog::getHelmet(int index) {
     } else {
         HelmetItem empty;
         empty.helmetBrand = "Invalid";
+        empty.helmetPrice = 0; 
         return empty;
     }
 }

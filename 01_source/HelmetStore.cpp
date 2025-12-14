@@ -20,7 +20,7 @@ void adminMenu(){
                 string nameAdmin, passAdmin;
                 cout << "\nEnter Admin Name: ";
                 getline(cin, nameAdmin);
-                cout << "\nEnter Admin Password: ";
+                cout << "Enter Admin Password: ";
                 getline(cin, passAdmin);
                 if (admin.loginAdmin(nameAdmin, passAdmin)) {
                     int admOption;

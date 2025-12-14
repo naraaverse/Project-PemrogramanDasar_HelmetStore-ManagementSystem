@@ -93,7 +93,8 @@ void Catalog::updateCatalog() {
         else if (choice == 2) {
             cout << "\n--- HELMET LIST ---" << endl;
             for (int i = 0; i < totalHelm; i++) {
-                 cout << (i + 1) << ". " << helmetList[i].helmetBrand 
+                 cout << (i + 1) << ". " << helmetList[i].helmetBrand
+                      << " - Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice
                       << " (Stock: " << helmetList[i].availability << ")" << endl;
             }
             int editIndex;

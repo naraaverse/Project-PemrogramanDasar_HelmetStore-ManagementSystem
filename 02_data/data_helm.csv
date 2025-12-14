@@ -1,16 +1,16 @@
-Brand,Color,Price,Type,Stock
-KYT TT Course,Red,1500000,Full-Face,10
-Cargloss Retro Gloss,Silver,280000,Retro,2
+Brand,Color,Price,Type,Availability
+KYT TT Course,Red,1.5e+006,Full-Face,10
+Cargloss Retro Gloss,Silver,280000,Retro,5
 GM Thunder Cross,Black,500000,Half-Face,25
 NHK R6,Black,450000,Half-Face,50
-AGV Pista GP,Brown,18000000,Full-Face,1
+AGV Pista GP,Brown,1.8e+007,Full-Face,1
 Zeus Zs-611,Grey,750000,Modular,20
 Ink Centro,Purple,400000,Half-Face,12
-Arai RX-7X,Blue,9500000,Full-Face,10
+Arai RX-7X,Blue,9.5e+006,Full-Face,10
 JPX Fox1,Orange,600000,Off-Road,3
 NJS Kairoz,White,850000,Half-Face,8
-Shoei X14,Pink,12000000,Full-Face,32
+Shoei X14,Pink,1.2e+007,Full-Face,32
 Cargloss Retro Solid,Green,300000,Retro,2
 GM Teen,Pink ,250000,Half-Face,4
 NHK Gladiator,Yellow,500000,Half-Face,8
-KYT KX-1 Race GP,Tosca,1750000,Full-Face,17
+KYT KX-1 Race GP,Tosca,1.75e+006,Full-Face,17

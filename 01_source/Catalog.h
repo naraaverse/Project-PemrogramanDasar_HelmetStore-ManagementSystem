@@ -28,5 +28,6 @@ public:
 
 private:
 	HelmetItem helmetList[50];
+	int totalHelm;
 };
 #endif // CATALOG_H

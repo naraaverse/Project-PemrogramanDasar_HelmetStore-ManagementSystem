@@ -6,14 +6,42 @@
 ///////////////////////////////////////////////////////////
 
 #include "Catalog.h"
+#include <fstream>
+#include <sstream>
 #include <iostream>
+using namespace std;
 
 Catalog::Catalog(){
-    helmetList[0].helmetBrand = "KYT Course";
-    helmetList[0].helmetColor = "Blue";
-    helmetList[0].helmetPrice = 150000;
-    helmetList[0].helmetType = "Full Face";
-    helmetList[0].availability = 10;
+    int totalHelm = 0;
+    ifstream file("../02_data/data_helm.csv");
+
+    if (!file.is_open()) {
+        cout << "[ERROR] Database file not found!" << endl;
+        return;
+    }
+
+    string line;
+    getline(file, line); // Skip header line
+    while (getline(file, line)) {
+        stringstream ss(line);
+        string brand, color, type, price, availability;
+
+        getline(ss, brand, ',');
+        getline(ss, color, ',');
+        getline(ss, price, ',');
+        getline(ss, type, ',');
+        getline(ss, availability, ',');\
+
+        if(totalHelm < 50) {
+            helmetList[totalHelm].helmetBrand = brand;
+            helmetList[totalHelm].helmetColor = color;
+            helmetList[totalHelm].helmetPrice = stod(price);
+            helmetList[totalHelm].helmetType = type;
+            helmetList[totalHelm].availability = stoi(availability);
+            totalHelm++;
+        }
+    }
+    file.close();
 }
 
 Catalog::~Catalog(){
@@ -34,10 +62,34 @@ void Catalog::updateCatalog(){
 }
 
 void Catalog::displayCatalog(){
-    /*cout << "\nHelmet Details Information\n";
-    cout << "Brand: " << helmetBrand << endl;
-    cout << "Color: " << helmetColor << endl;
-    cout << "Price: Rp. " << helmetPrice << endl;
-    cout << "Type: " << helmetType << endl;
-    cout << "Availability: " << availability << " units" << endl;*/
+    int option;
+
+    do {
+        cout << "\n=== CATALOG LIST ===" << endl;
+        for (int i = 0; i < totalHelm; i++) {
+            cout << (i + 1) << ". " << helmetList[i].helmetBrand 
+                 << " - " << helmetList[i].helmetColor 
+                 << " (Rp " << helmetList[i].helmetPrice << ")" << endl;
+        }
+        cout << "0. Back to Menu" << endl;
+        cout << "Select number to view details: ";
+        cin >> option;
+        cin.ignore();
+        if (option > 0 && option <= totalHelm) {
+            int index = option - 1;
+            cout << "\n--- HELM DETAILS SPECIFICATION ---" << endl;
+            cout << "Brand        : " << helmetList[index].helmetBrand << endl;
+            cout << "Color        : " << helmetList[index].helmetColor << endl;
+            cout << "Price        : Rp " << helmetList[index].helmetPrice << endl;
+            cout << "Type         : " << helmetList[index].helmetType << endl;
+            cout << "Availability : " << helmetList[index].availability << " units" << endl;
+            cout << "------------------------" << endl;
+            cout << "Click Enter to return to Catalog";
+            string enterKey;
+            getline(cin, enterKey);
+        } else if (option != 0) {
+            cout << "Invalid number!" << endl;
+        }
+
+    } while (option != 0);
 }

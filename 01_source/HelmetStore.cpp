@@ -28,7 +28,8 @@ void adminMenu(Catalog &catalog){
                     do {
                         cout << "\nWelcome to Admin Panel!" << endl;
                         cout << "1. Manage Catalog" << endl;
-                        cout << "2. Logout" << endl;
+                        cout << "2. Mange Users" << endl;
+                        cout << "3. Logout" << endl;
                         cout << "Choice: ";
                         cin >> admOption;
                         cin.ignore();
@@ -39,6 +40,10 @@ void adminMenu(Catalog &catalog){
                                 break; 
                             }
                             case 2: {
+                                admin.manageUsers();
+                                break; 
+                            }
+                            case 3: {
                                 string answer;
                                 cout << "Are you sure? (yes/no): ";
                                 cin >> answer;

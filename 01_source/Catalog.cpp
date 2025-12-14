@@ -69,11 +69,7 @@ void Catalog::displayCatalog(){
     do {
         cout << "\n=== CATALOG LIST ===" << endl;
         for (int i = 0; i < totalHelm; i++) {
-            cout << (i + 1) << ". " << helmetList[i].helmetBrand
-                 << " [" << helmetList[i].helmetType << "] " 
-                 << " - " << helmetList[i].helmetColor 
-                 << " (Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice << ") "
-                 << "Stok: " << helmetList[i].availability << endl;
+            cout << (i + 1) << ". " << helmetList[i].helmetBrand << endl;
         }
         cout << "0. Back to Menu" << endl;
         cout << "Select number to view details: ";

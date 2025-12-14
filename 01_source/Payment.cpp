@@ -43,7 +43,7 @@ bool Payment::processPayment(double totalCost, string &method) {
     cout << "\t|            PAYMENT GATEWAY            |" << endl;
     cout << "\t+=======================================+" << endl;
     cout << "\t|                                       |" << endl;
-    cout << "\t|  TOTAL BILL : Rp " << left << setw(20) << (long long)totalCost << "|" << endl;
+    cout << "\t|  TOTAL BILL : Rp " << left << setw(21) << (long long)totalCost << "|" << endl;
     cout << "\t|                                       |" << endl;
     cout << "\t|  [1] QRIS (Scan Barcode)              |" << endl;
     cout << "\t|  [2] Bank Transfer (Virtual Account)  |" << endl;

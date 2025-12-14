@@ -18,7 +18,7 @@ void showHeader() {
     cout << " | |  | |  __/ | | | | | | |  __/ |_  ____) | || (_) | | |  __/ " << endl;
     cout << " |_|  |_|\\___|_|_|_| |_| |_|\\___|\\__|/_____/ \\__\\___/|_|  \\___| " << endl;
     cout << "                                                                " << endl;
-    cout << "          PREMIUM HELMET STORE MANAGEMENT SYSTEM v1.0           " << endl;
+    cout << "                HELMET STORE MANAGEMENT SYSTEM           " << endl;
     cout << "================================================================" << endl;
 }
 

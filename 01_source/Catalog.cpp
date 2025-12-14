@@ -161,12 +161,12 @@ void Catalog::displayCatalog(){
             cout << "\t|         PRODUCT SPECIFICATION         |" << endl;
             cout << "\t+=======================================+" << endl;
             cout << "\t|                                       |" << endl;
-            cout << "\t|  Brand   : " << left << setw(26) << helmetList[index].helmetBrand << "|" << endl;
-            cout << "\t|  Type    : " << left << setw(26) << helmetList[index].helmetType << "|" << endl;
-            cout << "\t|  Color   : " << left << setw(26) << helmetList[index].helmetColor << "|" << endl;
-            cout << "\t|  Stock   : " << left << setw(26) << helmetList[index].availability << "|" << endl;
+            cout << "\t|  Brand   : " << left << setw(27) << helmetList[index].helmetBrand << "|" << endl;
+            cout << "\t|  Type    : " << left << setw(27) << helmetList[index].helmetType << "|" << endl;
+            cout << "\t|  Color   : " << left << setw(27) << helmetList[index].helmetColor << "|" << endl;
+            cout << "\t|  Stock   : " << left << setw(27) << helmetList[index].availability << "|" << endl;
             cout << "\t|                                       |" << endl;
-            cout << "\t|  PRICE   : Rp " << left << setw(21) << (long long)helmetList[index].helmetPrice << "|" << endl;
+            cout << "\t|  PRICE   : Rp " << left << setw(24) << (long long)helmetList[index].helmetPrice << "|" << endl;
             cout << "\t|                                       |" << endl;
             cout << "\t+=======================================+" << endl;
             
@@ -188,14 +188,13 @@ void Catalog::showListCat(){
     cout << "| No | Brand Name               | Color         | Price (Rp)    | Stock |" << endl;
     cout << "+----+--------------------------+---------------+---------------+-------+" << endl;
 
-    for (int i = 0; i < totalHelm; i++) {
-        string stockAlert = (helmetList[i].availability < 5) ? " (!)" : ""; 
+    for (int i = 0; i < totalHelm; i++) { 
         
         cout << "| " << left << setw(2) << (i + 1) 
              << " | " << left << setw(24) << helmetList[i].helmetBrand
              << " | " << left << setw(13) << helmetList[i].helmetColor
-             << " | " << right << setw(11) << (long long)helmetList[i].helmetPrice << "   " // Harga rata kanan
-             << " | " << left << setw(3) << helmetList[i].availability << stockAlert << " |" << endl;
+             << " | " << right << setw(11) << (long long)helmetList[i].helmetPrice << "   "
+             << " | " << left << setw(4) << helmetList[i].availability << " |" << endl;
     }
     cout << "+----+--------------------------+---------------+---------------+-------+" << endl;
 }

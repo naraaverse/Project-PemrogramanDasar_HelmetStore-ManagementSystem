@@ -70,7 +70,7 @@ bool User::loginAccount(){
     cout << "\t+=======================================+" << endl;
 
     cout << "\n\t Authenticating";
-    for(int i=0; i<4; i++) { cout << "."; Sleep(200); }
+    for(int i = 0; i < 4; i++) { cout << "."; Sleep(200); }
 
     ifstream file("../02_data/data_user.csv");
     string line;
@@ -123,10 +123,10 @@ void User::viewProfile(){
     cout << "\t|              MY USER PROFILE              |" << endl;
     cout << "\t+===========================================+" << endl;
     cout << "\t|                                           |" << endl;
-    cout << "\t|  Username  : " << left << setw(25) << userName << "|" << endl;
-    cout << "\t|  Full Name : " << left << setw(25) << fullName << "|" << endl;
-    cout << "\t|  Address   : " << left << setw(25) << address << "|" << endl;
-    cout << "\t|  Phone     : " << left << setw(25) << phoneNumber << "|" << endl;
+    cout << "\t|  Username  : " << left << setw(29) << userName << "|" << endl;
+    cout << "\t|  Full Name : " << left << setw(29) << fullName << "|" << endl;
+    cout << "\t|  Address   : " << left << setw(29) << address << "|" << endl;
+    cout << "\t|  Phone     : " << left << setw(29) << phoneNumber << "|" << endl;
     cout << "\t|                                           |" << endl;
     cout << "\t+===========================================+" << endl;
     

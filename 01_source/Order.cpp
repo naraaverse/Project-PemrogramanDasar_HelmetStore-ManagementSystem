@@ -94,8 +94,8 @@ void Order::helmetOrder(User &user, Catalog &catalog) {
         cout << "\t|       OFFICIAL RECEIPT        |" << endl;
         cout << "\t|      HELMET STORE SYSTEM      |" << endl;
         cout << "\t|-------------------------------|" << endl;
-        cout << "\t| DATE: " << __DATE__ << "              |" << endl;
-        cout << "\t| TIME: " << __TIME__ << "              |" << endl;
+        cout << "\t| DATE: " << __DATE__; cout << left << setw(22) << "|" << endl;
+        cout << "\t| TIME: " << __TIME__; cout << left << setw(22) << "|" << endl;
         cout << "\t|-------------------------------|" << endl;
         cout << "\t| CUST : " << left << setw(22) << customerName.substr(0, 22) << " |" << endl;
         cout << "\t| ITEM : " << left << setw(22) << helmetBrand << " |" << endl;

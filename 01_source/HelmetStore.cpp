@@ -28,7 +28,7 @@ void adminMenu(Catalog &catalog){
                     do {
                         cout << "\nWelcome to Admin Panel!" << endl;
                         cout << "1. Manage Catalog" << endl;
-                        cout << "2. Mange Users" << endl;
+                        cout << "2. Manage Users" << endl;
                         cout << "3. Logout" << endl;
                         cout << "Choice: ";
                         cin >> admOption;

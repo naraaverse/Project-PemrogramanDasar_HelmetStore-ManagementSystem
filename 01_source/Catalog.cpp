@@ -13,7 +13,7 @@
 using namespace std;
 
 Catalog::Catalog(){
-    int totalHelm = 0;
+    totalHelm = 0;
     ifstream file("../02_data/data_helm.csv");
 
     if (!file.is_open()) {
@@ -24,6 +24,7 @@ Catalog::Catalog(){
     string line;
     getline(file, line); // Skip header line
     while (getline(file, line)) {
+        if (line.empty()) continue;
         stringstream ss(line);
         string brand, color, type, price, availability;
 
@@ -68,11 +69,11 @@ void Catalog::displayCatalog(){
     do {
         cout << "\n=== CATALOG LIST ===" << endl;
         for (int i = 0; i < totalHelm; i++) {
-            cout << (i + 1) << ". " << helmetList[i].helmetBrand 
+            cout << (i + 1) << ". " << helmetList[i].helmetBrand
+                 << " [" << helmetList[i].helmetType << "] " 
                  << " - " << helmetList[i].helmetColor 
-                 << " [" << helmetList[i].helmetType << "] "
-                 << " (Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice << ")"
-                 << "Stok:" << helmetList[i].availability << endl;
+                 << " (Rp " << fixed << setprecision(0) << helmetList[i].helmetPrice << ") "
+                 << "Stok: " << helmetList[i].availability << endl;
         }
         cout << "0. Back to Menu" << endl;
         cout << "Select number to view details: ";
